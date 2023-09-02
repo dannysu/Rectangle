@@ -17,10 +17,17 @@ class CenterThirdCalculation: WindowCalculation, OrientationAware {
     
     func landscapeRect(_ visibleFrameOfScreen: CGRect) -> RectResult {
         var rect = visibleFrameOfScreen
-        rect.origin.x = visibleFrameOfScreen.minX + floor(visibleFrameOfScreen.width / 3.0)
-        rect.origin.y = visibleFrameOfScreen.minY
-        rect.size.width = visibleFrameOfScreen.width / 3.0
-        rect.size.height = visibleFrameOfScreen.height
+        if visibleFrameOfScreen.width == 5120 {
+            rect.origin.x = visibleFrameOfScreen.minX + 1316
+            rect.origin.y = visibleFrameOfScreen.minY
+            rect.size.width = 2488
+            rect.size.height = visibleFrameOfScreen.height
+        } else {
+            rect.origin.x = visibleFrameOfScreen.minX + floor(visibleFrameOfScreen.width / 3.0)
+            rect.origin.y = visibleFrameOfScreen.minY
+            rect.size.width = visibleFrameOfScreen.width / 3.0
+            rect.size.height = visibleFrameOfScreen.height
+        }
         return RectResult(rect, subAction: .centerVerticalThird)
     }
     

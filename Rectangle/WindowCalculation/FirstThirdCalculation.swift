@@ -46,7 +46,11 @@ class FirstThirdCalculation: WindowCalculation, OrientationAware {
     
     func landscapeRect(_ visibleFrameOfScreen: CGRect) -> RectResult {
         var rect = visibleFrameOfScreen
-        rect.size.width = floor(visibleFrameOfScreen.width / 3.0)
+        if visibleFrameOfScreen.width == 5120 {
+            rect.size.width = 1316
+        } else {
+            rect.size.width = floor(visibleFrameOfScreen.width / 3.0)
+        }
         return RectResult(rect, subAction: .leftThird)
     }
     
